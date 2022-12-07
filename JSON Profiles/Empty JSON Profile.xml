@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="5287cfea-3d02-4400-8d5e-35d8963c6e93" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-10T16:12:57Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jan.von-milczewski@cegeka.de" modifiedDate="2022-11-10T16:18:33Z" name="Empty JSON Profile" type="profile.json" version="2">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <JSONProfile>
+      <DataElements>
+        <JSONRootValue dataType="character" isMappable="false" isNode="true" key="1" name="Root" validateData="false">
+          <DataFormat>
+            <ProfileCharacterFormat/>
+          </DataFormat>
+          <JSONObject isMappable="false" isNode="true" key="2" name="Object"/>
+          <Qualifiers>
+            <QualifierList/>
+          </Qualifiers>
+        </JSONRootValue>
+      </DataElements>
+      <tagLists/>
+    </JSONProfile>
+  </bns:object>
+</Component>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="b0d5c57c-1130-4960-9e7f-f16419248c96" createdBy="jochen.wolz@cegeka.com" createdDate="2022-12-01T09:53:55Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-12-01T10:00:28Z" name="List Dir Operation" subType="officialboomi-X3979C-sftpv2-prod" type="connector-action" version="2">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Operation returnApplicationErrors="false" trackResponse="true">
+      <Archiving directory="" enabled="false"/>
+      <Configuration>
+        <GenericOperationConfig customOperationType="LIST" objectTypeId="DIRECTORY" objectTypeName="Directory" operationType="QUERY" requestProfileType="xml" responseProfileType="binary">
+          <field id="count" type="integer" value="-1"/>
+          <field id="recursiveList" type="boolean" value="false"/>
+          <Options>
+            <QueryOptions>
+              <Fields>
+                <ConnectorObject name="Directory">
+                  <FieldList>
+                    <ConnectorField filterable="true" name="fileName" selected="false" type="FilePath"/>
+                    <ConnectorField filterable="true" name="fileSize" selected="false" type="Comparable"/>
+                    <ConnectorField filterable="true" name="modifiedDate" selected="false" type="Comparable"/>
+                    <ConnectorField filterable="true" name="isDirectory" selected="false" type="Boolean"/>
+                  </FieldList>
+                  <Filter>
+                    <ConnectorBaseFilter>
+                      <ConnectorFilterLogical logicalOperator="and">
+                        <ConnectorFilterExpression expressionField="fileName" expressionOperator="WILDCARD" key="0" name="fileName:WILDCARD" type="FilePath"/>
+                        <ConnectorFilterExpression expressionField="isDirectory" expressionOperator="EQUALS" key="1" name="isDirectory:EQUALS" type="Boolean"/>
+                      </ConnectorFilterLogical>
+                    </ConnectorBaseFilter>
+                  </Filter>
+                  <Sorts/>
+                </ConnectorObject>
+              </Fields>
+              <Inputs>
+                <Input key="0" name="fileName:WILDCARD"/>
+                <Input key="1" name="isDirectory:EQUALS"/>
+              </Inputs>
+            </QueryOptions>
+          </Options>
+        </GenericOperationConfig>
+      </Configuration>
+      <Tracking>
+        <TrackedFields/>
+      </Tracking>
+      <Caching/>
+    </Operation>
+  </bns:object>
+</Component>

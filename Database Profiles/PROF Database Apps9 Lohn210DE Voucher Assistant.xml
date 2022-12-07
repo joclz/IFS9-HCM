@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="89c4d1ed-f682-4e7c-9194-e68a26a07086" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-10T16:06:50Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-11-28T14:11:41Z" name="PROF Database Apps9 Lohn210DE Voucher Assistant " type="profile.db" version="99">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <DatabaseProfile strict="true" version="2">
+      <ProfileProperties>
+        <DatabaseGeneralInfo executionType="dbwrite"/>
+      </ProfileProperties>
+      <DataElements>
+        <DBStatement isNode="true" key="2" name="Statement" statementType="standardinsertupdatedelete" storedProcedure="" tableName="">
+          <DBFields isNode="true" key="3" name="Fields">
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="4" mandatory="false" name="SITE">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="6" mandatory="false" name="FILE_NAME">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="7" mandatory="false" name="LOAD_DATE">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="5" mandatory="false" name="LOAD_DATA">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="8" mandatory="false" name="SPLIT_PATTERN">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+          </DBFields>
+          <sql>DECLARE
+   site_ varchar(100);
+   file_name_ varchar(1000);
+   load_id_ NUMBER;
+   load_parameters_ VARCHAR2(32000);
+   load_date_ varchar(100);
+   file_template_id_ varchar(100);
+   file_type_ varchar(100);
+   messages_ varchar2(32000);
+   load_data_ clob;
+   segment_ clob;
+   split_pattern_ varchar(100);
+   pos_ NUMBER;
+   count_ NUMBER;
+   p1_ varchar(100);
+   p4_ varchar(100);
+   p5_ varchar(100);
+   
+BEGIN
+  site_ := ?;
+  file_name_ := ?;
+  load_date_ := ?;
+  load_data_ := ?;
+  split_pattern_ := ?;
+  file_template_id_ := 'Lohn210DE';
+  file_type_ := 'ExtVoucher';
+  p1_ := '1';
+  p4_ := '1';
+  p5_ := 'InputFile';
+  load_parameters_ :=
+    '!PARAMETER_MESSAGE' || CHR(10) ||
+    '$FILE_TYPE=' || file_type_ || CHR(10) ||
+    '$SET_ID=1' || CHR(10) ||
+    '$FILE_NAME=' || file_name_ || CHR(10) ||
+    '$COMPANY=' || site_ || CHR(10) ||
+    '$FILE_TEMPLATE_ID=' || file_template_id_ || CHR(10) ||
+    '$CLIENT_SERVER=C' || CHR(10) ||
+    '$FILE_DIRECTION_DB=1' || CHR(10) ||
+    '$USER_ID=SVC.BOOMI_IFSAPPS9HR' || CHR(10) ||
+    '$LOAD_TYPE=' || CHR(10) ||
+    '$LOAD_DATE=' || load_date_ || CHR(10) ||
+    --'$USER_GROUP=AC' || CHR(10) ||--
+    '$USER_GROUP=' || CHR(10) ||
+    '$CHECK_WHEN_LOADED=TRUE' || CHR(10) ||
+    '$CREATE_WHEN_CHECKED=TRUE' || CHR(10) ||
+    '$PARAM_SET=TRUE' || CHR(10) ||
+    '$LU_SET=TRUE';
+ 
+  ifsapp.Ext_File_Message_API.Return_For_Trans_Form(file_type_, p1_, load_parameters_, file_template_id_, p4_, 
+      p5_, file_name_, site_, 'C', 'NEW_COMPANY', site_); 
+ 
+  ifsapp.EXT_FILE_LOAD_API.Create_Load_Id_Param(load_id_, load_parameters_);
+  commit;
+
+  -- RAISE_APPLICATION_ERROR(-20001, 'load_id_ = ' || load_id_, TRUE);
+
+  -- ifsapp.Ext_File_Template_API.Get_Backup_File_Name(load_id_);
+
+  pos_:=1;
+  count_ := 0;
+  for i in 1 .. (length(load_data_) - length(split_pattern_)) loop
+    if substr(load_data_, i, length(split_pattern_)) = split_pattern_ then
+        count_ := count_ + 1;
+        segment_ := substr(load_data_, pos_, i - pos_);
+        ifsapp.External_File_Utility_API.Load_Client_File_( 'ADD' , load_id_ , file_template_id_ , file_type_ , segment_ , site_ , file_name_);
+        pos_ := i + length(split_pattern_);
+        --RAISE_APPLICATION_ERROR(-20001, 'count_=' || count_ || ' load_id_ = ' || load_id_ || ' split_pattern_=' || split_pattern_ || ' segment_=' || segment_ || ' load_data_=' || substr(load_data_, 1, 1000), TRUE);
+    end if;
+  end loop;
+  segment_ := substr(load_data_, pos_, length(load_data_) + 1 - pos_);
+  ifsapp.External_File_Utility_API.Load_Client_File_( 'EXE' , load_id_ , file_template_id_ , file_type_ , segment_ , site_ , file_name_);
+  commit;
+        --RAISE_APPLICATION_ERROR(-20001, 'xxcount_=' || count_ || ' xxload_id_ = ' || load_id_ || ' split_pattern_=' || split_pattern_ || ' segment_=' || segment_ || ' load_data_=' || substr(load_data_, 1, 1000), TRUE);
+  
+  ifsapp.External_File_Utility_API.Unpack_Ext_Line(file_type_,  file_template_id_, load_id_, site_);
+  commit;
+  ifsapp.External_File_Utility_API.Store_File_Identities (load_id_);
+  commit;
+  ifsapp.External_File_Utility_API.Start_Api_To_Call (messages_, load_id_);
+  commit;
+
+  RAISE_APPLICATION_ERROR(-20001, '#' || messages_ || '#', TRUE);
+
+END;</sql>
+        </DBStatement>
+      </DataElements>
+    </DatabaseProfile>
+  </bns:object>
+</Component>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="2cf35b1e-8aee-4669-8753-5a89c28aa8f6" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-16T14:51:24Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-11-21T14:10:38Z" name="Map Csv to Database Employee" type="transform.map" version="18">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Map fromProfile="4bcff54a-e6fc-45cf-ad98-01cb40cf2f82" toProfile="0a2e04ba-f752-4e68-bc47-f5d7d3fc79ab">
+      <Mappings>
+        <Mapping fromKey="6" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='6']" fromNamePath="Record/Elements/Company ID" fromType="profile" toKey="7" toKeyPath="*[@key='5']/*[@key='6']/*[@key='7']" toNamePath="Statement/Fields/COMPANY_ID" toType="profile"/>
+        <Mapping fromKey="4" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='4']" fromNamePath="Record/Elements/Employee First Name" fromType="profile" toKey="8" toKeyPath="*[@key='5']/*[@key='6']/*[@key='8']" toNamePath="Statement/Fields/FNAME" toType="profile"/>
+        <Mapping fromKey="5" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='5']" fromNamePath="Record/Elements/Employee Last Name" fromType="profile" toKey="9" toKeyPath="*[@key='5']/*[@key='6']/*[@key='9']" toNamePath="Statement/Fields/LNAME" toType="profile"/>
+        <Mapping fromKey="4" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='4']" fromNamePath="Record/Elements/Employee First Name" fromType="profile" toFunction="1" toKey="1" toType="function"/>
+        <Mapping fromKey="5" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='5']" fromNamePath="Record/Elements/Employee Last Name" fromType="profile" toFunction="1" toKey="2" toType="function"/>
+        <Mapping fromFunction="1" fromKey="1" fromType="function" toKey="12" toKeyPath="*[@key='5']/*[@key='6']/*[@key='12']" toNamePath="Statement/Fields/PERSON_ID" toType="profile"/>
+        <Mapping fromCacheJoinKey="0" fromKey="9" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='9']" fromNamePath="Record/Elements/Start Date" fromType="profile" toFunction="2" toKey="1" toType="function"/>
+        <Mapping fromFunction="2" fromKey="2" fromType="function" toKey="13" toKeyPath="*[@key='5']/*[@key='6']/*[@key='13']" toNamePath="Statement/Fields/VALID_FROM" toType="profile"/>
+        <Mapping fromKey="3" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='3']" fromNamePath="Record/Elements/Employee ID" fromType="profile" toKey="15" toKeyPath="*[@key='5']/*[@key='6']/*[@key='15']" toNamePath="Statement/Fields/EMP_NO" toType="profile"/>
+        <Mapping fromKey="6" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='6']" fromNamePath="Record/Elements/Company ID" fromType="profile" toFunction="6" toKey="1" toType="function"/>
+        <Mapping fromFunction="6" fromKey="2" fromType="function" toKey="14" toKeyPath="*[@key='5']/*[@key='6']/*[@key='14']" toNamePath="Statement/Fields/EMPLOYEE_STATUS" toType="profile"/>
+      </Mappings>
+      <Functions optimizeExecutionOrder="true">
+        <FunctionStep category="userdefined" id="1c4ffbce-fdb7-4b67-a79f-8e03429b6d11" key="1" name="Set PersonId" position="1" type="userdefined" x="30.0" y="270.0">
+          <Inputs>
+            <Input key="1" name="FirstName"/>
+            <Input key="2" name="LastName"/>
+          </Inputs>
+          <Outputs>
+            <Output key="1" name="PersonId"/>
+          </Outputs>
+          <Configuration/>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" cacheOption="none" category="Date" key="2" name="Date Format" position="2" sumEnabled="false" type="DateFormat" x="10.0" y="395.0">
+          <Inputs>
+            <Input key="1" name="Date String"/>
+            <Input default="dd.MM.yyyy" key="2" name="Input Mask"/>
+            <Input default="yyyy-MM-dd-00.00.00" key="3" name="Output Mask"/>
+          </Inputs>
+          <Outputs>
+            <Output key="2" name="Result"/>
+          </Outputs>
+          <Configuration/>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" cacheOption="none" category="Lookup" key="6" name="Sql Lookup" position="6" sumEnabled="false" type="SqlLookup" x="10.0" y="542.0">
+          <Inputs>
+            <Input key="1" name="Company_ID"/>
+          </Inputs>
+          <Outputs>
+            <Output key="2" name="Employee_Status"/>
+          </Outputs>
+          <Configuration>
+            <SqlLookup connection="cb9903f0-38dd-4a52-8568-0c21eece30d8" executionType="sql" spResultOption="resultset" storedProcedureName="">
+              <SqlToExecute>select EMPLOYEE_STATUS from IFSAPP.EMPLOYEE_STATUS_LOV where ( COMPANY_ID = ? ) and ACTIVE = 'True'</SqlToExecute>
+              <Input dataType="character" index="1" name="Company_ID"/>
+              <Output dataType="character" index="2" name="Employee_Status"/>
+            </SqlLookup>
+          </Configuration>
+        </FunctionStep>
+      </Functions>
+      <Defaults/>
+      <DocumentCacheJoins/>
+    </Map>
+  </bns:object>
+</Component>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="1149c876-2bca-4ea0-9c2f-840f4ff1e27b" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-18T15:02:05Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-11-21T09:30:26Z" name="SAP SFTP V2 WriteFileOperation in arc folder" subType="officialboomi-X3979C-sftpv2-prod" type="connector-action" version="9">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Operation returnApplicationErrors="false" trackResponse="false">
+      <Archiving directory="" enabled="false"/>
+      <Configuration>
+        <GenericOperationConfig objectTypeId="File" objectTypeName="File" operationType="CREATE" requestProfileType="binary" responseProfile="a08ee1e4-239d-4671-abb6-7dd3db6a1395" responseProfileType="json">
+          <field id="actionIfFileExists" type="string" value="FORCE_UNIQUE_NAMES"/>
+          <field id="stagingDirectory" type="string" value=""/>
+          <field id="tempExtension" type="string" value=""/>
+          <field id="targetFileName" type="string" value=""/>
+          <field id="tempFileName" type="string" value=""/>
+          <cookie role="OUTPUT">
+            <value>{"includeAllMetadata":false}</value>
+          </cookie>
+          <Options>
+            <QueryOptions>
+              <Fields>
+                <ConnectorObject name="File">
+                  <FieldList>
+                    <ConnectorField filterable="true" name="fileName" selectable="true" selected="true" sortable="true"/>
+                    <ConnectorField filterable="true" name="remoteDirectory" selectable="true" selected="true" sortable="true"/>
+                  </FieldList>
+                </ConnectorObject>
+              </Fields>
+              <Inputs/>
+            </QueryOptions>
+          </Options>
+        </GenericOperationConfig>
+      </Configuration>
+      <Tracking>
+        <TrackedFields/>
+      </Tracking>
+      <Caching/>
+    </Operation>
+  </bns:object>
+</Component>

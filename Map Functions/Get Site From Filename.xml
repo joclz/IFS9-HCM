@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="9d371e6c-6c6f-439f-b5bb-565b0b4cfa5b" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-16T12:16:32Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-11-17T09:05:17Z" name="Get Site From Filename" type="transform.function" version="4">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Function>
+      <Inputs/>
+      <Outputs>
+        <Output key="1" name="OUTPUT"/>
+      </Outputs>
+      <Steps>
+        <FunctionStep cacheEnabled="true" cacheOption="none" category="String" key="2" name="String Remove" position="2" sumEnabled="false" type="StringRemove" x="607.0" y="376.0">
+          <Inputs>
+            <Input key="1" name="Original String"/>
+            <Input default="PYPOSTING_" key="2" name="String to Remove"/>
+          </Inputs>
+          <Outputs>
+            <Output key="2" name="Result"/>
+          </Outputs>
+          <Configuration/>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" category="ProcessProperty" key="4" name="Get Document Property" position="1" sumEnabled="false" type="DocumentPropertyGet" x="131.0" y="300.0">
+          <Inputs/>
+          <Outputs>
+            <Output key="3" name="Dynamic Document Property - CsvFileName"/>
+          </Outputs>
+          <Configuration>
+            <DocumentProperty defaultValue="" persist="false" propertyId="dynamicdocument.CsvFileName" propertyName="Dynamic Document Property - CsvFileName"/>
+          </Configuration>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" cacheOption="none" category="String" key="5" name="Right Character Trim" position="3" sumEnabled="false" type="RightTrim" x="1050.0" y="437.0">
+          <Inputs>
+            <Input key="1" name="Original String"/>
+            <Input default="5" key="2" name="Fix to Length"/>
+          </Inputs>
+          <Outputs>
+            <Output key="2" name="Result"/>
+          </Outputs>
+          <Configuration/>
+        </FunctionStep>
+      </Steps>
+      <Mappings>
+        <Mapping fromFunction="2" fromKey="2" fromNamePath="String Remove/Result" fromType="function" toFunction="5" toKey="1" toNamePath="Right Character Trim/Original String" toType="function"/>
+        <Mapping fromFunction="4" fromKey="3" fromNamePath="Get Document Property/Dynamic Document Property - CsvFileName" fromType="function" toFunction="2" toKey="1" toNamePath="String Remove/Original String" toType="function"/>
+        <Mapping fromFunction="5" fromKey="2" fromNamePath="Right Character Trim/Result" fromType="function" toFunction="0" toKey="1" toNamePath="Editor/OUTPUT" toType="function"/>
+      </Mappings>
+    </Function>
+  </bns:object>
+</Component>

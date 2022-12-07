@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="ab95b9c6-6f14-4b6c-be06-a2406bcfb183" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-18T09:03:08Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-12-02T13:06:47Z" name="PROF Get Employee by EMP_NO and COMPANY_ID" type="profile.db" version="10">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <DatabaseProfile strict="true" version="2">
+      <ProfileProperties>
+        <DatabaseGeneralInfo executionType="dbread"/>
+      </ProfileProperties>
+      <DataElements>
+        <DBStatement isNode="true" key="2" name="Statement" statementType="select" storedProcedure="" tableName="">
+          <DBFields isNode="true" key="3" name="Fields" type="result_set">
+            <DatabaseElement dataType="character" enforceUnique="false" isMappable="true" isNode="true" key="7" mandatory="false" name="EMP_NO">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="11" mandatory="false" name="COMPANY_ID">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+          </DBFields>
+          <DBParameters isNode="true" key="4" name="Parameters">
+            <DBParameter isMappable="false" isNode="true" key="10" name="EMP_NO">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DBParameter>
+            <DBParameter isMappable="false" isNode="true" key="12" name="COMPANY_ID">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DBParameter>
+          </DBParameters>
+          <sql>SELECT EMP_NO, COMPANY_ID FROM IFSAPP.COMPANY_PERSON WHERE EMP_NO = ? AND COMPANY_ID = ?</sql>
+        </DBStatement>
+      </DataElements>
+    </DatabaseProfile>
+  </bns:object>
+</Component>

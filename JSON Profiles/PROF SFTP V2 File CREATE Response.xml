@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="a08ee1e4-239d-4671-abb6-7dd3db6a1395" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-18T15:01:11Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-11-24T14:21:34Z" name="PROF SFTP V2 File CREATE Response" type="profile.json" version="2">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <JSONProfile strict="false">
+      <GeneratorConfig enableFieldLengthValidation="true" enableParseDateTime="true"/>
+      <DataElements>
+        <JSONRootValue dataType="character" isMappable="true" isNode="true" key="1" name="File">
+          <DataFormat>
+            <ProfileCharacterFormat/>
+          </DataFormat>
+          <JSONObject isMappable="false" isNode="true" key="2" name="Object">
+            <JSONObjectEntry dataType="character" isMappable="true" isNode="true" key="3" name="fileName" required="true">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </JSONObjectEntry>
+            <JSONObjectEntry dataType="character" isMappable="true" isNode="true" key="4" name="remoteDirectory" required="true">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </JSONObjectEntry>
+          </JSONObject>
+          <Qualifiers>
+            <QualifierList/>
+          </Qualifiers>
+        </JSONRootValue>
+      </DataElements>
+      <tagLists/>
+    </JSONProfile>
+  </bns:object>
+</Component>

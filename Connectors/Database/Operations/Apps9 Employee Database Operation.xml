@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="0f44ed66-649e-446a-9aae-71dd68654ccd" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-16T15:01:19Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jan.von-milczewski@cegeka.de" modifiedDate="2022-11-16T15:01:19Z" name="Apps9 Employee Database Operation" subType="database" type="connector-action" version="1">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Operation>
+      <Archiving directory="" enabled="false"/>
+      <Configuration>
+        <DatabaseSendAction batchCount="0" commitOption="commitprofile" enableBatching="true">
+          <WriteProfile profileId="0a2e04ba-f752-4e68-bc47-f5d7d3fc79ab"/>
+        </DatabaseSendAction>
+      </Configuration>
+      <Tracking>
+        <TrackedFields/>
+      </Tracking>
+      <Caching/>
+    </Operation>
+  </bns:object>
+</Component>

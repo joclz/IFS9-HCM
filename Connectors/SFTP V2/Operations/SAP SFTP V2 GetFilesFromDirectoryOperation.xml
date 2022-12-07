@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="3e46aa99-05e7-4033-92b3-9783d64d7475" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-15T09:45:37Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-11-15T09:46:02Z" name="SAP SFTP V2 GetFilesFromDirectoryOperation" subType="officialboomi-X3979C-sftpv2-prod" type="connector-action" version="2">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Operation returnApplicationErrors="false" trackResponse="true">
+      <Archiving directory="" enabled="false"/>
+      <Configuration>
+        <GenericOperationConfig customOperationType="QUERY" objectTypeId="FILE" objectTypeName="File" operationType="QUERY" requestProfileType="xml" responseProfileType="binary">
+          <field id="count" type="integer" value="-1"/>
+          <field id="includeAllMetadata" type="boolean" value="false"/>
+          <Options>
+            <QueryOptions>
+              <Fields>
+                <ConnectorObject name="File">
+                  <FieldList>
+                    <ConnectorField filterable="true" name="fileName" selected="false" type="FilePath"/>
+                    <ConnectorField filterable="true" name="fileSize" selected="false" type="Comparable"/>
+                    <ConnectorField filterable="true" name="modifiedDate" selected="false" type="Comparable"/>
+                  </FieldList>
+                  <Filter>
+                    <ConnectorBaseFilter>
+                      <ConnectorFilterExpression expressionField="fileName" expressionOperator="WILDCARD" key="0" name="fileName:WILDCARD" type="FilePath"/>
+                    </ConnectorBaseFilter>
+                  </Filter>
+                  <Sorts/>
+                </ConnectorObject>
+              </Fields>
+              <Inputs>
+                <Input key="0" name="fileName:WILDCARD"/>
+              </Inputs>
+            </QueryOptions>
+          </Options>
+        </GenericOperationConfig>
+      </Configuration>
+      <Tracking>
+        <TrackedFields/>
+      </Tracking>
+      <Caching/>
+    </Operation>
+  </bns:object>
+</Component>

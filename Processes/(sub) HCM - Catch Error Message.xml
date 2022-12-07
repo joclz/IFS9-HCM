@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="129ed7ea-79ef-49ce-b521-9b90ef84f413" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-28T07:55:08Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-11-30T17:00:04Z" name="(sub) HCM - Catch Error Message" type="process" version="3">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <process allowSimultaneous="false" enableUserLog="false" processLogOnErrorOnly="false" purgeDataImmediately="false" updateRunDates="false" workload="general">
+      <shapes>
+        <shape image="start" name="shape1" shapetype="start" userlabel="" x="48.0" y="48.0">
+          <configuration>
+            <passthroughaction/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape1.dragpoint1" toShape="shape4" x="224.0" y="57.0">
+              <linesegment length="0" name="shape1.dragpoint1.lineseg1" orient="horizontal" x="82.0" y="63.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg2" orient="vertical" x="82.0" y="63.0"/>
+              <linesegment length="79" name="shape1.dragpoint1.lineseg3" orient="horizontal" x="82.0" y="63.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg4" orient="vertical" x="161.0" y="63.0"/>
+              <linesegment length="63" name="shape1.dragpoint1.lineseg5" orient="horizontal" x="161.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape5" shapetype="processcall" userlabel="" x="624.0" y="48.0">
+          <configuration>
+            <processcall abort="true" processId="c0f6974c-2227-4983-9150-5a461fe61cea" wait="true">
+              <parameters/>
+              <returnpaths/>
+            </processcall>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="branch_icon" name="shape4" shapetype="branch" userlabel="" x="240.0" y="48.0">
+          <configuration>
+            <branch numBranches="2"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="1" name="shape4.dragpoint1" text="1" toShape="shape2" x="416.0" y="57.0">
+              <linesegment length="0" name="shape4.dragpoint1.lineseg1" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape4.dragpoint1.lineseg2" orient="vertical" x="274.0" y="63.0"/>
+              <linesegment length="79" name="shape4.dragpoint1.lineseg3" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape4.dragpoint1.lineseg4" orient="vertical" x="353.0" y="63.0"/>
+              <linesegment label="1" length="63" name="shape4.dragpoint1.lineseg5" orient="horizontal" x="353.0" y="63.0"/>
+            </dragpoint>
+            <dragpoint identifier="2" name="shape4.dragpoint2" text="2" toShape="shape3" x="416.0" y="217.0">
+              <linesegment length="0" name="shape4.dragpoint2.lineseg1" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape4.dragpoint2.lineseg2" orient="vertical" x="274.0" y="63.0"/>
+              <linesegment length="79" name="shape4.dragpoint2.lineseg3" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="160" name="shape4.dragpoint2.lineseg4" orient="vertical" x="353.0" y="63.0"/>
+              <linesegment label="2" length="63" name="shape4.dragpoint2.lineseg5" orient="horizontal" x="353.0" y="223.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="documentproperties_icon" name="shape2" shapetype="documentproperties" userlabel="Set Error Properties" x="432.0" y="48.0">
+          <configuration>
+            <documentproperties>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Document Property - LogMessage" persist="false" propertyId="dynamicdocument.LogMessage" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="1" valueType="static">
+                    <staticparameter staticproperty="Uploaded "/>
+                  </parametervalue>
+                  <parametervalue key="2" valueType="track">
+                    <trackparameter defaultValue="" propertyId="dynamicdocument.CsvFileName" propertyName="Dynamic Document Property - CsvFileName"/>
+                  </parametervalue>
+                  <parametervalue key="3" valueType="static">
+                    <staticparameter staticproperty=" with errors: "/>
+                  </parametervalue>
+                  <parametervalue key="4" valueType="track">
+                    <trackparameter defaultValue="" propertyId="meta.base.catcherrorsmessage" propertyName="Base - Try/Catch Message"/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Document Property - EventData" persist="false" propertyId="dynamicdocument.EventData" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="5" valueType="static">
+                    <staticparameter staticproperty="CSV_File: "/>
+                  </parametervalue>
+                  <parametervalue key="6" valueType="track">
+                    <trackparameter defaultValue="" propertyId="dynamicdocument.CsvFileName" propertyName="Dynamic Document Property - CsvFileName"/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Document Property - ErrorSubject" persist="false" propertyId="dynamicdocument.ErrorSubject" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="7" valueType="static">
+                    <staticparameter staticproperty="Boomi Error HCM Apps9 "/>
+                  </parametervalue>
+                  <parametervalue key="8" valueType="process">
+                    <processparameter processproperty="SubProcessIdentifier" processpropertydefaultvalue=""/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+            </documentproperties>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape2.dragpoint1" toShape="shape5" x="608.0" y="57.0">
+              <linesegment length="0" name="shape2.dragpoint1.lineseg1" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape2.dragpoint1.lineseg2" orient="vertical" x="466.0" y="63.0"/>
+              <linesegment length="79" name="shape2.dragpoint1.lineseg3" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape2.dragpoint1.lineseg4" orient="vertical" x="545.0" y="63.0"/>
+              <linesegment length="63" name="shape2.dragpoint1.lineseg5" orient="horizontal" x="545.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="returndocuments_icon" name="shape3" shapetype="returndocuments" userlabel="" x="432.0" y="208.0">
+          <configuration>
+            <returndocuments label=""/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+      </shapes>
+    </process>
+  </bns:object>
+  <bns:processOverrides/>
+</Component>

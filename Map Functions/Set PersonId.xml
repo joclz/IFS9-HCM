@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="1c4ffbce-fdb7-4b67-a79f-8e03429b6d11" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-16T15:08:43Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jan.von-milczewski@cegeka.de" modifiedDate="2022-11-16T15:10:05Z" name="Set PersonId" type="transform.function" version="2">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Function>
+      <Inputs>
+        <Input key="1" name="FirstName"/>
+        <Input key="2" name="LastName"/>
+      </Inputs>
+      <Outputs>
+        <Output key="1" name="PersonId"/>
+      </Outputs>
+      <Steps>
+        <FunctionStep cacheEnabled="true" cacheOption="none" category="String" key="1" name="String Concat" position="1" sumEnabled="false" type="StringConcat" x="112.0" y="300.0">
+          <Inputs>
+            <Input key="1" name="FirstName"/>
+            <Input key="2" name="LastName"/>
+          </Inputs>
+          <Outputs>
+            <Output key="2" name="Result"/>
+          </Outputs>
+          <Configuration>
+            <StringConcat delimiter="."/>
+          </Configuration>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" cacheOption="none" category="String" key="2" name="String Replace" position="2" sumEnabled="false" type="StringReplace" x="465.0" y="360.0">
+          <Inputs>
+            <Input key="1" name="Original String"/>
+            <Input default=" " key="2" name="String to Search"/>
+            <Input key="3" name="String to Replace"/>
+          </Inputs>
+          <Outputs>
+            <Output key="2" name="Result"/>
+          </Outputs>
+          <Configuration/>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" cacheOption="none" category="String" key="3" name="String To Upper" position="3" sumEnabled="false" type="String2Upper" x="777.0" y="445.0">
+          <Inputs>
+            <Input key="1" name="Original String"/>
+          </Inputs>
+          <Outputs>
+            <Output key="2" name="Result"/>
+          </Outputs>
+          <Configuration/>
+        </FunctionStep>
+      </Steps>
+      <Mappings>
+        <Mapping fromFunction="3" fromKey="2" fromNamePath="String To Upper/Result" fromType="function" toFunction="0" toKey="1" toNamePath="Editor/PersonId" toType="function"/>
+        <Mapping fromFunction="1" fromKey="2" fromNamePath="String Concat/Result" fromType="function" toFunction="2" toKey="1" toNamePath="String Replace/Original String" toType="function"/>
+        <Mapping fromFunction="0" fromKey="1" fromNamePath="Editor/FirstName" fromType="function" toFunction="1" toKey="1" toNamePath="String Concat/FirstName" toType="function"/>
+        <Mapping fromFunction="0" fromKey="2" fromNamePath="Editor/LastName" fromType="function" toFunction="1" toKey="2" toNamePath="String Concat/LastName" toType="function"/>
+        <Mapping fromFunction="2" fromKey="2" fromNamePath="String Replace/Result" fromType="function" toFunction="3" toKey="1" toNamePath="String To Upper/Original String" toType="function"/>
+      </Mappings>
+    </Function>
+  </bns:object>
+</Component>

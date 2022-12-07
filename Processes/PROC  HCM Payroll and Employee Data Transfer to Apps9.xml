@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="7c2d5d73-b6d0-4acf-97db-7ee7840311f8" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-28T15:24:19Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-12-05T10:31:01Z" name="PROC * HCM Payroll and Employee Data Transfer to Apps9" type="process" version="60">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <process allowSimultaneous="false" enableUserLog="false" processLogOnErrorOnly="false" purgeDataImmediately="false" updateRunDates="true" workload="general">
+      <shapes>
+        <shape image="start" name="shape1" shapetype="start" userlabel="" x="48.0" y="48.0">
+          <configuration>
+            <noaction/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape1.dragpoint1" toShape="shape16" x="224.0" y="57.0">
+              <linesegment length="0" name="shape1.dragpoint1.lineseg1" orient="horizontal" x="82.0" y="63.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg2" orient="vertical" x="82.0" y="63.0"/>
+              <linesegment length="79" name="shape1.dragpoint1.lineseg3" orient="horizontal" x="82.0" y="63.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg4" orient="vertical" x="161.0" y="63.0"/>
+              <linesegment length="63" name="shape1.dragpoint1.lineseg5" orient="horizontal" x="161.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape3" shapetype="processcall" userlabel="" x="624.0" y="48.0">
+          <configuration>
+            <processcall abort="true" processId="64b21072-b625-4261-88b6-da01ac1a52c6" wait="true">
+              <parameters/>
+              <returnpaths/>
+            </processcall>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="processcall_icon" name="shape4" shapetype="processcall" userlabel="" x="624.0" y="208.0">
+          <configuration>
+            <processcall abort="true" processId="a1633d12-18fe-4a7b-9a23-a0a15abf8c9f" wait="true">
+              <parameters/>
+              <returnpaths/>
+            </processcall>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="branch_icon" name="shape5" shapetype="branch" userlabel="" x="432.0" y="48.0">
+          <configuration>
+            <branch numBranches="3"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="1" name="shape5.dragpoint1" text="1" toShape="shape3" x="608.0" y="57.0">
+              <linesegment length="0" name="shape5.dragpoint1.lineseg1" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape5.dragpoint1.lineseg2" orient="vertical" x="466.0" y="63.0"/>
+              <linesegment length="79" name="shape5.dragpoint1.lineseg3" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape5.dragpoint1.lineseg4" orient="vertical" x="545.0" y="63.0"/>
+              <linesegment label="1" length="63" name="shape5.dragpoint1.lineseg5" orient="horizontal" x="545.0" y="63.0"/>
+            </dragpoint>
+            <dragpoint identifier="2" name="shape5.dragpoint2" text="2" toShape="shape4" x="608.0" y="217.0">
+              <linesegment length="0" name="shape5.dragpoint2.lineseg1" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape5.dragpoint2.lineseg2" orient="vertical" x="466.0" y="63.0"/>
+              <linesegment length="79" name="shape5.dragpoint2.lineseg3" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="160" name="shape5.dragpoint2.lineseg4" orient="vertical" x="545.0" y="63.0"/>
+              <linesegment label="2" length="63" name="shape5.dragpoint2.lineseg5" orient="horizontal" x="545.0" y="223.0"/>
+            </dragpoint>
+            <dragpoint identifier="3" name="shape5.dragpoint3" text="3" toShape="shape12" x="608.0" y="377.0">
+              <linesegment length="0" name="shape5.dragpoint3.lineseg1" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape5.dragpoint3.lineseg2" orient="vertical" x="466.0" y="63.0"/>
+              <linesegment length="79" name="shape5.dragpoint3.lineseg3" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="320" name="shape5.dragpoint3.lineseg4" orient="vertical" x="545.0" y="63.0"/>
+              <linesegment label="3" length="63" name="shape5.dragpoint3.lineseg5" orient="horizontal" x="545.0" y="383.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="decision_icon" name="shape12" shapetype="decision" userlabel="If Run Without Errors" x="624.0" y="368.0">
+          <configuration>
+            <decision comparison="equals" name="If Run Without Errors">
+              <decisionvalue valueType="process">
+                <processparameter processproperty="ProcessCollectedErrors" processpropertydefaultvalue=""/>
+              </decisionvalue>
+              <decisionvalue valueType="static">
+                <staticparameter staticproperty=""/>
+              </decisionvalue>
+            </decision>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="true" name="shape12.dragpoint1" text="True" toShape="shape17" x="800.0" y="377.0">
+              <linesegment length="0" name="shape12.dragpoint1.lineseg1" orient="horizontal" x="658.0" y="383.0"/>
+              <linesegment length="0" name="shape12.dragpoint1.lineseg2" orient="vertical" x="658.0" y="383.0"/>
+              <linesegment length="79" name="shape12.dragpoint1.lineseg3" orient="horizontal" x="658.0" y="383.0"/>
+              <linesegment length="0" name="shape12.dragpoint1.lineseg4" orient="vertical" x="737.0" y="383.0"/>
+              <linesegment label="True" length="63" name="shape12.dragpoint1.lineseg5" orient="horizontal" x="737.0" y="383.0"/>
+            </dragpoint>
+            <dragpoint identifier="false" name="shape12.dragpoint2" text="False" toShape="shape14" x="800.0" y="537.0">
+              <linesegment length="0" name="shape12.dragpoint2.lineseg1" orient="horizontal" x="658.0" y="383.0"/>
+              <linesegment length="0" name="shape12.dragpoint2.lineseg2" orient="vertical" x="658.0" y="383.0"/>
+              <linesegment length="79" name="shape12.dragpoint2.lineseg3" orient="horizontal" x="658.0" y="383.0"/>
+              <linesegment length="160" name="shape12.dragpoint2.lineseg4" orient="vertical" x="737.0" y="383.0"/>
+              <linesegment label="False" length="63" name="shape12.dragpoint2.lineseg5" orient="horizontal" x="737.0" y="543.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="exception_icon" name="shape14" shapetype="exception" userlabel="Throw ProcessCollectedErrors" x="816.0" y="528.0">
+          <configuration>
+            <exception stopProcessReturnSingleDoc="false" stopsingledoc="true" title="">
+              <exMessage>{1}</exMessage>
+              <exParameters>
+                <parametervalue key="0" valueType="process">
+                  <processparameter processproperty="ProcessCollectedErrors" processpropertydefaultvalue=""/>
+                </parametervalue>
+              </exParameters>
+            </exception>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="documentproperties_icon" name="shape16" shapetype="documentproperties" userlabel="Set LogFileName And SleepSeconds" x="240.0" y="48.0">
+          <configuration>
+            <documentproperties>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Process Property - LogFileName" persist="false" propertyId="process.LogFileName" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="1" valueType="process">
+                    <processparameter processproperty="HCMLogFileName" processpropertydefaultvalue=""/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Process Property - SleepSeconds" persist="false" propertyId="process.SleepSeconds" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="2" valueType="static">
+                    <staticparameter staticproperty="5"/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+            </documentproperties>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape16.dragpoint1" toShape="shape5" x="416.0" y="57.0">
+              <linesegment length="0" name="shape16.dragpoint1.lineseg1" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape16.dragpoint1.lineseg2" orient="vertical" x="274.0" y="63.0"/>
+              <linesegment length="79" name="shape16.dragpoint1.lineseg3" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape16.dragpoint1.lineseg4" orient="vertical" x="353.0" y="63.0"/>
+              <linesegment length="63" name="shape16.dragpoint1.lineseg5" orient="horizontal" x="353.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="stop_icon" name="shape17" shapetype="stop" userlabel="" x="816.0" y="368.0">
+          <configuration>
+            <stop continue="true"/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+      </shapes>
+    </process>
+  </bns:object>
+  <bns:processOverrides>
+    <Overrides>
+      <Connections>
+        <ConnectionOverride id="cb9903f0-38dd-4a52-8568-0c21eece30d8">
+          <field id="driverId" label="Driver Type" overrideable="false" xpath="DatabaseConnectionSettings/@driverId"/>
+          <field id="username" label="User" overrideable="true" xpath="DatabaseConnectionSettings/@username"/>
+          <field id="password" label="Password" overrideable="true" xpath="DatabaseConnectionSettings/@password"/>
+          <field id="host" label="Host" overrideable="false" xpath="DatabaseConnectionSettings/@host"/>
+          <field id="port" label="Port" overrideable="false" xpath="DatabaseConnectionSettings/@port"/>
+          <field id="dbname" label="DB Name" overrideable="false" xpath="DatabaseConnectionSettings/@dbname"/>
+          <field id="additional" label="Additional Options" overrideable="false" xpath="DatabaseConnectionSettings/@additional"/>
+          <field id="className" label="Class Name" overrideable="false" xpath="DatabaseConnectionSettings/@className"/>
+          <field id="urlFormat" label="Connection URL" overrideable="true" xpath="DatabaseConnectionSettings/@urlFormat"/>
+          <field id="writeSQLToFile" label="Write SQL To File?" overrideable="false" xpath="DatabaseConnectionSettings/WriteOptions/@writeSQLToFile"/>
+          <field id="sqlFilePath" label="SQL File Path" overrideable="false" xpath="DatabaseConnectionSettings/WriteOptions/@sqlFilePath"/>
+          <field id="isPoolEnabled" label="Enable Pooling" overrideable="false" xpath="DatabaseConnectionSettings/@isPoolEnabled"/>
+          <field id="maxActive" label="Maximum Connections (0 for unlimited)" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@maxActive"/>
+          <field id="minIdle" label="Minimum Connections" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@minIdle"/>
+          <field id="maxIdleTime" label="Maximum Idle Time (sec)" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@maxIdleTime"/>
+          <field id="exhaustedAction" label="When Exhausted Action" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@exhaustedAction"/>
+          <field id="maxWait" label="Maximum Wait Time (sec)" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@maxWait"/>
+          <field id="testOnBorrow" label="Test Connection When Borrowing From Pool" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@testOnBorrow"/>
+          <field id="testOnReturn" label="Test Connection When Returning To Pool" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@testOnReturn"/>
+          <field id="testIdle" label="Test Idle Connections" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@testIdle"/>
+          <field id="maxIdle" label="Validation Query" overrideable="false" xpath="DatabaseConnectionSettings/AdapterPoolInfo/@validationQuery"/>
+        </ConnectionOverride>
+        <ConnectionOverride id="1c40be1e-c594-4dd2-b2d3-7ea58589cbfc">
+          <field id="authType" label="Authentication Type" overrideable="false"/>
+          <field id="remoteDirectory" label="Remote Directory" overrideable="false"/>
+          <field id="host" label="Host" overrideable="false"/>
+          <field id="username" label="User Name" overrideable="true"/>
+          <field id="password" label="Password" overrideable="true"/>
+          <field id="port" label="Port" overrideable="false"/>
+          <field id="keyPath" label="Client SSH Key File Path" overrideable="false"/>
+          <field id="keyPswrd" label="Key File Password" overrideable="false"/>
+          <field id="hostEntry" label="Known Host Entry" overrideable="false"/>
+          <field id="isMaxExchange" label="Use Max Key Exchange size of 1024" overrideable="false"/>
+          <field id="prvkeyContent" label="Private Key Content" overrideable="false"/>
+          <field id="pubkeyContent" label="Public Key Content" overrideable="false"/>
+          <field id="keyPairName" label="Key Pair Name" overrideable="false"/>
+          <field id="useKeyContent" label="Use Keys' content for authentication" overrideable="false"/>
+          <field id="enablePooling" label="Use Connection Pooling" overrideable="false"/>
+          <field id="proxyEnable" label="Use Proxy" overrideable="false"/>
+          <field id="proxyType" label="Choose Proxy Type" overrideable="false"/>
+          <field id="proxyHost" label="Proxy Host" overrideable="false"/>
+          <field id="proxyPort" label="Proxy Port" overrideable="false"/>
+          <field id="proxyuserName" label="Proxy Username" overrideable="false"/>
+          <field id="proxyPassword" label="Proxy Password" overrideable="false"/>
+          <field id="connectionTimeout" label="Connection Timeout (ms)" overrideable="false"/>
+          <field id="readTimeout" label="Read Timeout (ms)" overrideable="false"/>
+        </ConnectionOverride>
+      </Connections>
+      <PartnerOverrides/>
+      <Properties>
+        <PropertyOverride name="HCMErrorEmailTo"/>
+        <PropertyOverride name="HCMEmployeeCsvDirectory"/>
+        <PropertyOverride name="HCMPayrollCsvDirectory"/>
+        <PropertyOverride name="HCMLogFileName"/>
+      </Properties>
+      <Extensions>
+        <ObjectDefinitions>
+          <objectDefinition connectionId="1c40be1e-c594-4dd2-b2d3-7ea58589cbfc" connectorType="officialboomi-X3979C-sftpv2-prod" id="1c40be1e-c594-4dd2-b2d3-7ea58589cbfcDIRECTORY" name="SFTP V2 DIRECTORY (SAP SFTP V2 Connection)" objectType="DIRECTORY" userDefined="false">
+            <profiles/>
+          </objectDefinition>
+          <objectDefinition connectionId="1c40be1e-c594-4dd2-b2d3-7ea58589cbfc" connectorType="officialboomi-X3979C-sftpv2-prod" id="1c40be1e-c594-4dd2-b2d3-7ea58589cbfcFILE" name="SFTP V2 FILE (SAP SFTP V2 Connection)" objectType="FILE" userDefined="false">
+            <profiles/>
+          </objectDefinition>
+          <objectDefinition connectionId="1c40be1e-c594-4dd2-b2d3-7ea58589cbfc" connectorType="officialboomi-X3979C-sftpv2-prod" id="1c40be1e-c594-4dd2-b2d3-7ea58589cbfcFile" name="SFTP V2 File (SAP SFTP V2 Connection)" objectType="File" userDefined="false">
+            <profiles/>
+          </objectDefinition>
+          <unusedProfiles/>
+        </ObjectDefinitions>
+        <DataMaps>
+          <unusedMaps/>
+        </DataMaps>
+      </Extensions>
+      <CrossReferenceOverrides/>
+      <PGPOverrides/>
+      <DefinedProcessPropertyOverrides/>
+    </Overrides>
+  </bns:processOverrides>
+</Component>

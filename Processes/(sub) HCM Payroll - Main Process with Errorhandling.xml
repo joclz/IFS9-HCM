@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="498ae082-8faf-4a46-9bc4-7346795274b1" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-28T10:11:58Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-12-05T11:53:32Z" name="(sub) HCM Payroll - Main Process with Errorhandling" type="process" version="30">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <process allowSimultaneous="false" enableUserLog="false" processLogOnErrorOnly="false" purgeDataImmediately="false" updateRunDates="false" workload="general">
+      <shapes>
+        <shape image="start" name="shape1" shapetype="start" userlabel="" x="48.0" y="48.0">
+          <configuration>
+            <passthroughaction/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape1.dragpoint1" toShape="shape2" x="224.0" y="57.0">
+              <linesegment length="0" name="shape1.dragpoint1.lineseg1" orient="horizontal" x="82.0" y="63.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg2" orient="vertical" x="82.0" y="63.0"/>
+              <linesegment length="79" name="shape1.dragpoint1.lineseg3" orient="horizontal" x="82.0" y="63.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg4" orient="vertical" x="161.0" y="63.0"/>
+              <linesegment length="63" name="shape1.dragpoint1.lineseg5" orient="horizontal" x="161.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="documentproperties_icon" name="shape9" shapetype="documentproperties" userlabel="Setting CsvFileName" x="240.0" y="688.0">
+          <configuration>
+            <documentproperties>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Document Property - CsvFileName" persist="false" propertyId="dynamicdocument.CsvFileName" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="1" valueType="profile">
+                    <profileelement elementId="3" elementName="fileName (Root/Object/fileName)" profileId="7d89eb90-4ab8-48a4-af8e-902e40d1f99e" profileType="profile.json"/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+            </documentproperties>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape9.dragpoint1" toShape="unset" x="416.0" y="697.0">
+              <linesegment length="0" name="shape9.dragpoint1.lineseg1" orient="horizontal" x="274.0" y="703.0"/>
+              <linesegment length="0" name="shape9.dragpoint1.lineseg2" orient="vertical" x="274.0" y="703.0"/>
+              <linesegment length="79" name="shape9.dragpoint1.lineseg3" orient="horizontal" x="274.0" y="703.0"/>
+              <linesegment length="0" name="shape9.dragpoint1.lineseg4" orient="vertical" x="353.0" y="703.0"/>
+              <linesegment length="63" name="shape9.dragpoint1.lineseg5" orient="horizontal" x="353.0" y="703.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="catcherrors_icon" name="shape2" shapetype="catcherrors" userlabel="" x="240.0" y="48.0">
+          <configuration>
+            <catcherrors catchAll="false" retryCount="0"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="default" name="shape2.dragpoint1" text="Try" toShape="shape7" x="416.0" y="57.0">
+              <linesegment length="0" name="shape2.dragpoint1.lineseg1" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape2.dragpoint1.lineseg2" orient="vertical" x="274.0" y="63.0"/>
+              <linesegment length="79" name="shape2.dragpoint1.lineseg3" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape2.dragpoint1.lineseg4" orient="vertical" x="353.0" y="63.0"/>
+              <linesegment label="Try" length="63" name="shape2.dragpoint1.lineseg5" orient="horizontal" x="353.0" y="63.0"/>
+            </dragpoint>
+            <dragpoint identifier="error" name="shape2.dragpoint2" text="Catch" toShape="shape3" x="416.0" y="537.0">
+              <linesegment length="0" name="shape2.dragpoint2.lineseg1" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape2.dragpoint2.lineseg2" orient="vertical" x="274.0" y="63.0"/>
+              <linesegment length="79" name="shape2.dragpoint2.lineseg3" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="480" name="shape2.dragpoint2.lineseg4" orient="vertical" x="353.0" y="63.0"/>
+              <linesegment label="Catch" length="63" name="shape2.dragpoint2.lineseg5" orient="horizontal" x="353.0" y="543.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape3" shapetype="processcall" userlabel="" x="432.0" y="528.0">
+          <configuration>
+            <processcall abort="true" processId="129ed7ea-79ef-49ce-b521-9b90ef84f413" wait="true">
+              <parameters/>
+              <returnpaths>
+                <returnpaths childShapeName="shape3" returnLabel=""/>
+              </returnpaths>
+            </processcall>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="shape3" name="shape3.dragpoint1" toShape="shape13" x="608.0" y="537.0">
+              <linesegment length="0" name="shape3.dragpoint1.lineseg1" orient="horizontal" x="466.0" y="543.0"/>
+              <linesegment length="0" name="shape3.dragpoint1.lineseg2" orient="vertical" x="466.0" y="543.0"/>
+              <linesegment length="79" name="shape3.dragpoint1.lineseg3" orient="horizontal" x="466.0" y="543.0"/>
+              <linesegment length="0" name="shape3.dragpoint1.lineseg4" orient="vertical" x="545.0" y="543.0"/>
+              <linesegment length="63" name="shape3.dragpoint1.lineseg5" orient="horizontal" x="545.0" y="543.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="returndocuments_icon" name="shape6" shapetype="returndocuments" userlabel="" x="1584.0" y="48.0">
+          <configuration>
+            <returndocuments label=""/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="documentproperties_icon" name="shape7" shapetype="documentproperties" userlabel="Set SFTP Directory" x="432.0" y="48.0">
+          <configuration>
+            <documentproperties>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="SFTP V2 - Remote Directory" persist="false" propertyId="connector.officialboomi-X3979C-sftpv2-prod.remoteDirectory" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="4" valueType="process">
+                    <processparameter processproperty="HCMPayrollCsvDirectory" processpropertydefaultvalue=""/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+            </documentproperties>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape7.dragpoint1" toShape="shape18" x="608.0" y="57.0">
+              <linesegment length="0" name="shape7.dragpoint1.lineseg1" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape7.dragpoint1.lineseg2" orient="vertical" x="466.0" y="63.0"/>
+              <linesegment length="79" name="shape7.dragpoint1.lineseg3" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape7.dragpoint1.lineseg4" orient="vertical" x="545.0" y="63.0"/>
+              <linesegment length="63" name="shape7.dragpoint1.lineseg5" orient="horizontal" x="545.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="connectoraction_icon" name="shape8" shapetype="connectoraction" userlabel="SFTP V2 (Folder)" x="816.0" y="48.0">
+          <configuration>
+            <connectoraction actionType="QUERY" allowDynamicCredentials="NONE" connectionId="1c40be1e-c594-4dd2-b2d3-7ea58589cbfc" connectorType="officialboomi-X3979C-sftpv2-prod" hideSettings="false" operationId="3e46aa99-05e7-4033-92b3-9783d64d7475" parameter-profile="EMBEDDED|genericparameterchooser|3e46aa99-05e7-4033-92b3-9783d64d7475">
+              <parameters>
+                <parametervalue elementToSetId="0" elementToSetName="fileName:WILDCARD" key="0" valueType="static">
+                  <staticparameter staticproperty="PYPOSTING_*.csv"/>
+                </parametervalue>
+              </parameters>
+              <dynamicProperties/>
+            </connectoraction>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape8.dragpoint1" toShape="shape16" x="992.0" y="57.0">
+              <linesegment length="0" name="shape8.dragpoint1.lineseg1" orient="horizontal" x="850.0" y="63.0"/>
+              <linesegment length="0" name="shape8.dragpoint1.lineseg2" orient="vertical" x="850.0" y="63.0"/>
+              <linesegment length="79" name="shape8.dragpoint1.lineseg3" orient="horizontal" x="850.0" y="63.0"/>
+              <linesegment length="0" name="shape8.dragpoint1.lineseg4" orient="vertical" x="929.0" y="63.0"/>
+              <linesegment length="63" name="shape8.dragpoint1.lineseg5" orient="horizontal" x="929.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape10" shapetype="processcall" userlabel="" x="1392.0" y="48.0">
+          <configuration>
+            <processcall abort="true" processId="9562f7f4-62b5-4630-bbef-fa93dca3b2fe" wait="true">
+              <parameters/>
+              <returnpaths>
+                <returnpaths childShapeName="shape15" returnLabel=""/>
+                <returnpaths childShapeName="shape33" returnLabel=""/>
+              </returnpaths>
+            </processcall>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="shape15" name="shape10.dragpoint1" toShape="shape6" x="1568.0" y="57.0">
+              <linesegment length="0" name="shape10.dragpoint1.lineseg1" orient="horizontal" x="1426.0" y="63.0"/>
+              <linesegment length="0" name="shape10.dragpoint1.lineseg2" orient="vertical" x="1426.0" y="63.0"/>
+              <linesegment length="79" name="shape10.dragpoint1.lineseg3" orient="horizontal" x="1426.0" y="63.0"/>
+              <linesegment length="0" name="shape10.dragpoint1.lineseg4" orient="vertical" x="1505.0" y="63.0"/>
+              <linesegment length="63" name="shape10.dragpoint1.lineseg5" orient="horizontal" x="1505.0" y="63.0"/>
+            </dragpoint>
+            <dragpoint identifier="shape33" name="shape10.dragpoint2" toShape="shape6" x="1568.0" y="57.0">
+              <linesegment length="0" name="shape10.dragpoint2.lineseg1" orient="horizontal" x="1426.0" y="63.0"/>
+              <linesegment length="0" name="shape10.dragpoint2.lineseg2" orient="vertical" x="1426.0" y="63.0"/>
+              <linesegment length="79" name="shape10.dragpoint2.lineseg3" orient="horizontal" x="1426.0" y="63.0"/>
+              <linesegment length="0" name="shape10.dragpoint2.lineseg4" orient="vertical" x="1505.0" y="63.0"/>
+              <linesegment length="63" name="shape10.dragpoint2.lineseg5" orient="horizontal" x="1505.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="catcherrors_icon" name="shape11" shapetype="catcherrors" userlabel="" x="1200.0" y="48.0">
+          <configuration>
+            <catcherrors catchAll="false" retryCount="0"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="default" name="shape11.dragpoint1" text="Try" toShape="shape10" x="1376.0" y="57.0">
+              <linesegment length="0" name="shape11.dragpoint1.lineseg1" orient="horizontal" x="1234.0" y="63.0"/>
+              <linesegment length="0" name="shape11.dragpoint1.lineseg2" orient="vertical" x="1234.0" y="63.0"/>
+              <linesegment length="79" name="shape11.dragpoint1.lineseg3" orient="horizontal" x="1234.0" y="63.0"/>
+              <linesegment length="0" name="shape11.dragpoint1.lineseg4" orient="vertical" x="1313.0" y="63.0"/>
+              <linesegment label="Try" length="63" name="shape11.dragpoint1.lineseg5" orient="horizontal" x="1313.0" y="63.0"/>
+            </dragpoint>
+            <dragpoint identifier="error" name="shape11.dragpoint2" text="Catch" toShape="shape12" x="1376.0" y="377.0">
+              <linesegment length="0" name="shape11.dragpoint2.lineseg1" orient="horizontal" x="1234.0" y="63.0"/>
+              <linesegment length="0" name="shape11.dragpoint2.lineseg2" orient="vertical" x="1234.0" y="63.0"/>
+              <linesegment length="79" name="shape11.dragpoint2.lineseg3" orient="horizontal" x="1234.0" y="63.0"/>
+              <linesegment length="320" name="shape11.dragpoint2.lineseg4" orient="vertical" x="1313.0" y="63.0"/>
+              <linesegment label="Catch" length="63" name="shape11.dragpoint2.lineseg5" orient="horizontal" x="1313.0" y="383.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape12" shapetype="processcall" userlabel="" x="1392.0" y="368.0">
+          <configuration>
+            <processcall abort="true" processId="129ed7ea-79ef-49ce-b521-9b90ef84f413" wait="true">
+              <parameters/>
+              <returnpaths>
+                <returnpaths childShapeName="shape3" returnLabel=""/>
+              </returnpaths>
+            </processcall>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="shape3" name="shape12.dragpoint1" toShape="shape14" x="1568.0" y="377.0">
+              <linesegment length="0" name="shape12.dragpoint1.lineseg1" orient="horizontal" x="1426.0" y="383.0"/>
+              <linesegment length="0" name="shape12.dragpoint1.lineseg2" orient="vertical" x="1426.0" y="383.0"/>
+              <linesegment length="79" name="shape12.dragpoint1.lineseg3" orient="horizontal" x="1426.0" y="383.0"/>
+              <linesegment length="0" name="shape12.dragpoint1.lineseg4" orient="vertical" x="1505.0" y="383.0"/>
+              <linesegment length="63" name="shape12.dragpoint1.lineseg5" orient="horizontal" x="1505.0" y="383.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="returndocuments_icon" name="shape13" shapetype="returndocuments" userlabel="" x="624.0" y="528.0">
+          <configuration>
+            <returndocuments label=""/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="returndocuments_icon" name="shape14" shapetype="returndocuments" userlabel="" x="1584.0" y="368.0">
+          <configuration>
+            <returndocuments label=""/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="connectoraction_icon" name="shape15" shapetype="connectoraction" userlabel="" x="48.0" y="688.0">
+          <configuration>
+            <connectoraction actionType="LIST" allowDynamicCredentials="NONE" connectionId="1c40be1e-c594-4dd2-b2d3-7ea58589cbfc" connectorType="officialboomi-X3979C-sftpv2-prod" hideSettings="false" operationId="b0d5c57c-1130-4960-9e7f-f16419248c96" parameter-profile="EMBEDDED|genericparameterchooser|b0d5c57c-1130-4960-9e7f-f16419248c96">
+              <parameters>
+                <parametervalue elementToSetId="0" elementToSetName="fileName:WILDCARD" name="fileName:WILDCARD" valueType="static">
+                  <staticparameter staticproperty="*.csv"/>
+                </parametervalue>
+                <parametervalue elementToSetId="1" elementToSetName="isDirectory:EQUALS" name="isDirectory:EQUALS" valueType="static">
+                  <staticparameter staticproperty="false"/>
+                </parametervalue>
+              </parameters>
+              <dynamicProperties/>
+            </connectoraction>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape15.dragpoint1" toShape="shape9" x="224.0" y="697.0">
+              <linesegment length="0" name="shape15.dragpoint1.lineseg1" orient="horizontal" x="82.0" y="703.0"/>
+              <linesegment length="0" name="shape15.dragpoint1.lineseg2" orient="vertical" x="82.0" y="703.0"/>
+              <linesegment length="79" name="shape15.dragpoint1.lineseg3" orient="horizontal" x="82.0" y="703.0"/>
+              <linesegment length="0" name="shape15.dragpoint1.lineseg4" orient="vertical" x="161.0" y="703.0"/>
+              <linesegment length="63" name="shape15.dragpoint1.lineseg5" orient="horizontal" x="161.0" y="703.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="documentproperties_icon" name="shape16" shapetype="documentproperties" userlabel="Setting CsvFileName" x="1008.0" y="48.0">
+          <configuration>
+            <documentproperties>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Document Property - CsvFileName" persist="false" propertyId="dynamicdocument.CsvFileName" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="1" valueType="track">
+                    <trackparameter defaultValue="" propertyId="connector.officialboomi-X3979C-sftpv2-prod.fileName" propertyName="SFTP V2 - File Name"/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+            </documentproperties>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape16.dragpoint1" toShape="shape11" x="1184.0" y="57.0">
+              <linesegment length="0" name="shape16.dragpoint1.lineseg1" orient="horizontal" x="1042.0" y="63.0"/>
+              <linesegment length="0" name="shape16.dragpoint1.lineseg2" orient="vertical" x="1042.0" y="63.0"/>
+              <linesegment length="79" name="shape16.dragpoint1.lineseg3" orient="horizontal" x="1042.0" y="63.0"/>
+              <linesegment length="0" name="shape16.dragpoint1.lineseg4" orient="vertical" x="1121.0" y="63.0"/>
+              <linesegment length="63" name="shape16.dragpoint1.lineseg5" orient="horizontal" x="1121.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="dataprocess_icon" name="shape18" shapetype="dataprocess" userlabel="Sleep" x="624.0" y="48.0">
+          <configuration>
+            <dataprocess>
+              <step index="1" key="1" name="Custom Scripting" processtype="12">
+                <dataprocessscript language="groovy" useCache="true">
+                  <script>import java.util.Properties;
+import java.io.InputStream;
+import com.boomi.execution.ExecutionUtil; 
+
+int waitFor = ExecutionUtil.getDynamicProcessProperty("SleepSeconds") as Integer;
+Thread.sleep(waitFor * 1000);
+
+for( int i = 0; i &lt; dataContext.getDataCount(); i++ ) {
+    InputStream is = dataContext.getStream(i);
+    Properties props = dataContext.getProperties(i);
+
+    dataContext.storeStream(is, props);
+}</script>
+                </dataprocessscript>
+              </step>
+            </dataprocess>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape18.dragpoint1" toShape="shape8" x="800.0" y="57.0">
+              <linesegment length="0" name="shape18.dragpoint1.lineseg1" orient="horizontal" x="658.0" y="63.0"/>
+              <linesegment length="0" name="shape18.dragpoint1.lineseg2" orient="vertical" x="658.0" y="63.0"/>
+              <linesegment length="79" name="shape18.dragpoint1.lineseg3" orient="horizontal" x="658.0" y="63.0"/>
+              <linesegment length="0" name="shape18.dragpoint1.lineseg4" orient="vertical" x="737.0" y="63.0"/>
+              <linesegment length="63" name="shape18.dragpoint1.lineseg5" orient="horizontal" x="737.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+      </shapes>
+    </process>
+  </bns:object>
+  <bns:processOverrides/>
+</Component>

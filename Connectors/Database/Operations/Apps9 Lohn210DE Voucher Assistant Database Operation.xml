@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="8dc04a4d-1796-4665-8e67-2d6561061abc" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-10T16:06:55Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jan.von-milczewski@cegeka.de" modifiedDate="2022-11-10T16:06:55Z" name="Apps9 Lohn210DE Voucher Assistant Database Operation" subType="database" type="connector-action" version="1">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Operation>
+      <Archiving directory="" enabled="false"/>
+      <Configuration>
+        <DatabaseSendAction batchCount="0" commitOption="commitprofile" enableBatching="true">
+          <WriteProfile profileId="89c4d1ed-f682-4e7c-9194-e68a26a07086"/>
+        </DatabaseSendAction>
+      </Configuration>
+      <Tracking>
+        <TrackedFields/>
+      </Tracking>
+      <Caching/>
+    </Operation>
+  </bns:object>
+</Component>

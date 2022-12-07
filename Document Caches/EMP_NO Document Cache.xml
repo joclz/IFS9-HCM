@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="e752e15d-e30b-4d6a-9532-d57a17b4f011" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-23T13:29:26Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-12-02T13:31:43Z" name="EMP_NO Document Cache" type="documentcache" version="16">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <DocumentCache enforceSingleLucene="true" profile="ab95b9c6-6f14-4b6c-be06-a2406bcfb183" profileType="profile.db">
+      <CacheIndex indexId="11" indexName="EMP_NO">
+        <cacheKey alias="EMP_NO (Statement/Fields/EMP_NO)" elementKey="7" id="12" name="EMP_NO (Statement/Fields/EMP_NO)" taglistKey="0" xsi:type="ProfileElementKeyConfig"/>
+        <cacheKey alias="COMPANY_ID (Statement/Fields/COMPANY_ID)" elementKey="11" id="19" name="COMPANY_ID (Statement/Fields/COMPANY_ID)" taglistKey="0" xsi:type="ProfileElementKeyConfig"/>
+        <cacheKey alias="Dynamic Document Property - CsvFileName" defaultValue="" id="20" propertyId="dynamicdocument.CsvFileName" propertyName="Dynamic Document Property - CsvFileName" xsi:type="DocumentPropertyKeyConfig"/>
+      </CacheIndex>
+    </DocumentCache>
+  </bns:object>
+</Component>

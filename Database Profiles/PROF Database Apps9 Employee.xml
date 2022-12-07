@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="0a2e04ba-f752-4e68-bc47-f5d7d3fc79ab" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-16T14:48:57Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-12-01T07:23:02Z" name="PROF Database Apps9 Employee" type="profile.db" version="25">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <DatabaseProfile strict="true" version="2">
+      <ProfileProperties>
+        <DatabaseGeneralInfo executionType="dbwrite"/>
+      </ProfileProperties>
+      <DataElements>
+        <DBStatement isNode="true" key="5" name="Statement" statementType="standardinsertupdatedelete" storedProcedure="" tableName="">
+          <DBFields isNode="true" key="6" name="Fields">
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="7" mandatory="false" name="COMPANY_ID">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="15" mandatory="false" name="EMP_NO">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="8" mandatory="false" name="FNAME">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="9" mandatory="false" name="LNAME">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="10" mandatory="false" name="INTERNAL_DISPLAY_NAME">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="11" mandatory="false" name="EXTERNAL_DISPLAY_NAME">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="12" mandatory="false" name="PERSON_ID">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="13" mandatory="false" name="VALID_FROM">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+            <DatabaseElement enforceUnique="false" isMappable="true" isNode="true" key="14" mandatory="false" name="EMPLOYEE_STATUS">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </DatabaseElement>
+          </DBFields>
+          <sql>DECLARE
+   info_ VARCHAR2(32000);
+   objid_ VARCHAR2(32000);
+   objversion_ VARCHAR2(32000);
+   attr_ VARCHAR2(32000);
+
+   company_id_            ifsapp.COMPANY_PERSON.company_id%TYPE;
+   emp_no_                ifsapp.COMPANY_PERSON.emp_no%TYPE;
+   fname_                 ifsapp.COMPANY_PERSON.fname%TYPE;
+   lname_                 ifsapp.COMPANY_PERSON.lname%TYPE;
+   internal_display_name_ ifsapp.COMPANY_PERSON.internal_display_name%TYPE;
+   external_display_name_ ifsapp.COMPANY_PERSON.external_display_name%TYPE;
+   person_id_             ifsapp.COMPANY_PERSON.person_id%TYPE;
+   valid_from_            varchar(100);
+   employee_status_       ifsapp.EMPLOYEE_STATUS_DETAILS.employee_status%TYPE;
+
+BEGIN
+   company_id_ := ?;
+   emp_no_ := ?;
+   fname_ := ?;
+   lname_ := ?;
+   internal_display_name_ := ?;
+   external_display_name_ := ?;
+   person_id_ := ?;
+   valid_from_ := ?;
+   employee_status_ := ?;
+
+   internal_display_name_ := ifsapp.Employee_Name_Configurator_API.Get_Internal_Display_Name(fname_, NULL, NULL, lname_, NULL, NULL, NULL, NULL); 
+   /*
+   external_display_name_ := ifsapp.Employee_Name_Configurator_API.Get_External_Display_Name(fname_, NULL, NULL, lname_, NULL, NULL, NULL, NULL); 
+   */
+
+   ifsapp.Client_SYS.Clear_Attr(attr_);
+   ifsapp.COMPANY_PERSON_API.NEW__(info_, objid_, objversion_, attr_, 'PREPARE'); 
+   ifsapp.Client_SYS.Add_To_Attr('COMPANY_ID', company_id_, attr_);
+   ifsapp.Client_SYS.Add_To_Attr('EMP_NO', emp_no_, attr_);
+   ifsapp.Client_SYS.Add_To_Attr('FNAME', fname_, attr_);
+   ifsapp.Client_SYS.Add_To_Attr('LNAME', lname_, attr_);
+   ifsapp.Client_SYS.Add_To_Attr('INTERNAL_DISPLAY_NAME', internal_display_name_, attr_);
+   ifsapp.Client_SYS.Add_To_Attr('EXTERNAL_DISPLAY_NAME', '', attr_);  
+   ifsapp.Client_SYS.Add_To_Attr('PERSON_ID', person_id_, attr_);
+
+   ifsapp.COMPANY_PERSON_API.NEW__(info_, objid_, objversion_, attr_, 'DO'); 
+
+   /*
+   emp_no_ := ifsapp.Client_SYS.Get_Item_Value('EMP_NO', attr_);
+   */
+
+   ifsapp.Client_SYS.Clear_Attr(attr_);
+   ifsapp.EMPLOYEE_STATUS_DETAILS_API.NEW__(info_, objid_, objversion_, attr_, 'PREPARE');
+   ifsapp.Client_SYS.Add_To_Attr('VALID_FROM', valid_from_, attr_);
+   ifsapp.Client_SYS.Add_To_Attr('COMPANY_ID', company_id_, attr_);
+   ifsapp.Client_SYS.Add_To_Attr('EMP_NO', emp_no_, attr_);
+   ifsapp.Client_SYS.Add_To_Attr('EMPLOYEE_STATUS', employee_status_, attr_);
+
+   objid_ := NULL;
+   objversion_ := NULL;
+   ifsapp.EMPLOYEE_STATUS_DETAILS_API.NEW__(info_, objid_, objversion_, attr_, 'DO');
+
+END;
+</sql>
+        </DBStatement>
+      </DataElements>
+    </DatabaseProfile>
+  </bns:object>
+</Component>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="f0ecacb7-f467-4616-b6e0-62d5607eac88" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-14T14:51:21Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jan.von-milczewski@cegeka.de" modifiedDate="2022-11-14T15:58:48Z" name="PROF Flat File APPLICATION Message" type="profile.flatfile" version="2">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <FlatFileProfile modelVersion="2" strict="true">
+      <ProfileProperties>
+        <GeneralInfo fileType="delimited" useColumnHeaders="false"/>
+        <Options>
+          <DataOptions padcharacter=""/>
+          <DelimitedOptions delimiterEscape="" escapeForEscape="" fileDelimiter="otherdelimited" fileDelimiterSpecial="#" removeEscape="false" textQualifier="na" textQualifierEscape=""/>
+        </Options>
+      </ProfileProperties>
+      <DataElements>
+        <FlatFileRecord detectFormat="numberofcolumns" isNode="true" key="1" name="Record">
+          <FlatFileElements isNode="true" key="2" name="Elements">
+            <FlatFileElement dataType="character" enforceUnique="false" identityValue="" isMappable="true" isNode="true" justification="left" key="4" mandatory="false" maxLength="0" minLength="0" name="Prefix" useToIdentifyFormat="false" validateData="false">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </FlatFileElement>
+            <FlatFileElement dataType="character" enforceUnique="false" identityValue="" isMappable="true" isNode="true" justification="left" key="3" mandatory="false" maxLength="0" minLength="0" name="Message" useToIdentifyFormat="false" validateData="false">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </FlatFileElement>
+            <FlatFileElement dataType="character" enforceUnique="false" identityValue="" isMappable="true" isNode="true" justification="left" key="5" mandatory="false" maxLength="0" minLength="0" name="Postfix" useToIdentifyFormat="false" validateData="false">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </FlatFileElement>
+          </FlatFileElements>
+        </FlatFileRecord>
+      </DataElements>
+    </FlatFileProfile>
+  </bns:object>
+</Component>

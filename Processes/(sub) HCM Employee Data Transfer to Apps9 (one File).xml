@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="8233f9c9-627c-4491-9bd2-d72892f23d6b" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-16T14:29:20Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-12-06T10:38:00Z" name="(sub) HCM Employee Data Transfer to Apps9 (one File)" type="process" version="188">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <process allowSimultaneous="false" enableUserLog="false" processLogOnErrorOnly="false" purgeDataImmediately="false" updateRunDates="false" workload="general">
+      <shapes>
+        <shape image="start" name="shape1" shapetype="start" userlabel="" x="48.0" y="48.0">
+          <configuration>
+            <passthroughaction/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape1.dragpoint1" toShape="shape62" x="224.0" y="57.0">
+              <linesegment length="0" name="shape1.dragpoint1.lineseg1" orient="horizontal" x="82.0" y="63.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg2" orient="vertical" x="82.0" y="63.0"/>
+              <linesegment length="79" name="shape1.dragpoint1.lineseg3" orient="horizontal" x="82.0" y="63.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg4" orient="vertical" x="161.0" y="63.0"/>
+              <linesegment length="63" name="shape1.dragpoint1.lineseg5" orient="horizontal" x="161.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="connectoraction_icon" name="shape31" shapetype="connectoraction" userlabel="SFTP V2 (one File)" x="1584.0" y="48.0">
+          <configuration>
+            <connectoraction actionType="CREATE" allowDynamicCredentials="NONE" connectionId="1c40be1e-c594-4dd2-b2d3-7ea58589cbfc" connectorType="officialboomi-X3979C-sftpv2-prod" hideSettings="false" operationId="1149c876-2bca-4ea0-9c2f-840f4ff1e27b">
+              <parameters/>
+              <dynamicProperties/>
+            </connectoraction>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape31.dragpoint1" toShape="shape87" x="1760.0" y="57.0">
+              <linesegment length="0" name="shape31.dragpoint1.lineseg1" orient="horizontal" x="1618.0" y="63.0"/>
+              <linesegment length="0" name="shape31.dragpoint1.lineseg2" orient="vertical" x="1618.0" y="63.0"/>
+              <linesegment length="79" name="shape31.dragpoint1.lineseg3" orient="horizontal" x="1618.0" y="63.0"/>
+              <linesegment length="0" name="shape31.dragpoint1.lineseg4" orient="vertical" x="1697.0" y="63.0"/>
+              <linesegment length="63" name="shape31.dragpoint1.lineseg5" orient="horizontal" x="1697.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape33" shapetype="processcall" userlabel="File Exists in Arc Dir" x="624.0" y="48.0">
+          <configuration>
+            <processcall abort="true" processId="974eb3c8-16c5-43af-8c3b-83b2217476ef" wait="true">
+              <parameters/>
+              <returnpaths>
+                <returnpaths childShapeName="shape9" returnLabel=""/>
+              </returnpaths>
+            </processcall>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="shape9" name="shape33.dragpoint1" toShape="shape35" x="800.0" y="57.0">
+              <linesegment length="0" name="shape33.dragpoint1.lineseg1" orient="horizontal" x="658.0" y="63.0"/>
+              <linesegment length="0" name="shape33.dragpoint1.lineseg2" orient="vertical" x="658.0" y="63.0"/>
+              <linesegment length="79" name="shape33.dragpoint1.lineseg3" orient="horizontal" x="658.0" y="63.0"/>
+              <linesegment length="0" name="shape33.dragpoint1.lineseg4" orient="vertical" x="737.0" y="63.0"/>
+              <linesegment length="63" name="shape33.dragpoint1.lineseg5" orient="horizontal" x="737.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="decision_icon" name="shape35" shapetype="decision" userlabel="Is File Missing in Arc Dir?" x="816.0" y="48.0">
+          <configuration>
+            <decision comparison="equals" name="Is File Missing in Arc Dir?">
+              <decisionvalue valueType="documentcache">
+                <documentcacheparameter docCache="224b2d55-2bd9-4842-97b3-bb6ec9dd7d44" docCacheIndex="7" elementId="3" elementName="fileName (Root/Object/fileName)">
+                  <cacheKeyValues>
+                    <cacheKeyValue cacheKeyId="8">
+                      <parametervalue key="0" valueType="track">
+                        <trackparameter defaultValue="" propertyId="dynamicdocument.CsvFileName" propertyName="Dynamic Document Property - CsvFileName"/>
+                      </parametervalue>
+                    </cacheKeyValue>
+                  </cacheKeyValues>
+                </documentcacheparameter>
+              </decisionvalue>
+              <decisionvalue valueType="static">
+                <staticparameter staticproperty=""/>
+              </decisionvalue>
+            </decision>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="true" name="shape35.dragpoint1" text="True" toShape="shape86" x="992.0" y="57.0">
+              <linesegment length="0" name="shape35.dragpoint1.lineseg1" orient="horizontal" x="850.0" y="63.0"/>
+              <linesegment length="0" name="shape35.dragpoint1.lineseg2" orient="vertical" x="850.0" y="63.0"/>
+              <linesegment length="79" name="shape35.dragpoint1.lineseg3" orient="horizontal" x="850.0" y="63.0"/>
+              <linesegment length="0" name="shape35.dragpoint1.lineseg4" orient="vertical" x="929.0" y="63.0"/>
+              <linesegment label="True" length="63" name="shape35.dragpoint1.lineseg5" orient="horizontal" x="929.0" y="63.0"/>
+            </dragpoint>
+            <dragpoint identifier="false" name="shape35.dragpoint2" text="False" toShape="shape63" x="992.0" y="537.0">
+              <linesegment length="0" name="shape35.dragpoint2.lineseg1" orient="horizontal" x="850.0" y="63.0"/>
+              <linesegment length="0" name="shape35.dragpoint2.lineseg2" orient="vertical" x="850.0" y="63.0"/>
+              <linesegment length="79" name="shape35.dragpoint2.lineseg3" orient="horizontal" x="850.0" y="63.0"/>
+              <linesegment length="480" name="shape35.dragpoint2.lineseg4" orient="vertical" x="929.0" y="63.0"/>
+              <linesegment label="False" length="63" name="shape35.dragpoint2.lineseg5" orient="horizontal" x="929.0" y="543.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="documentproperties_icon" name="shape38" shapetype="documentproperties" userlabel="Set SFTP ARC Dir And File" x="1200.0" y="48.0">
+          <configuration>
+            <documentproperties>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="SFTP V2 - Remote Directory" persist="false" propertyId="connector.officialboomi-X3979C-sftpv2-prod.remoteDirectory" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="7" valueType="process">
+                    <processparameter processproperty="HCMEmployeeCsvDirectory" processpropertydefaultvalue=""/>
+                  </parametervalue>
+                  <parametervalue key="8" valueType="static">
+                    <staticparameter staticproperty="/arc"/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="SFTP V2 - File Name" persist="false" propertyId="connector.officialboomi-X3979C-sftpv2-prod.fileName" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="6" valueType="track">
+                    <trackparameter defaultValue="" propertyId="dynamicdocument.CsvFileName" propertyName="Dynamic Document Property - CsvFileName"/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+            </documentproperties>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape38.dragpoint1" toShape="shape91" x="1376.0" y="57.0">
+              <linesegment length="0" name="shape38.dragpoint1.lineseg1" orient="horizontal" x="1234.0" y="63.0"/>
+              <linesegment length="0" name="shape38.dragpoint1.lineseg2" orient="vertical" x="1234.0" y="63.0"/>
+              <linesegment length="79" name="shape38.dragpoint1.lineseg3" orient="horizontal" x="1234.0" y="63.0"/>
+              <linesegment length="0" name="shape38.dragpoint1.lineseg4" orient="vertical" x="1313.0" y="63.0"/>
+              <linesegment length="63" name="shape38.dragpoint1.lineseg5" orient="horizontal" x="1313.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="catcherrors_icon" name="shape62" shapetype="catcherrors" userlabel="" x="240.0" y="48.0">
+          <configuration>
+            <catcherrors catchAll="false" retryCount="0"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="default" name="shape62.dragpoint1" text="Try" toShape="shape82" x="416.0" y="57.0">
+              <linesegment length="0" name="shape62.dragpoint1.lineseg1" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape62.dragpoint1.lineseg2" orient="vertical" x="274.0" y="63.0"/>
+              <linesegment length="79" name="shape62.dragpoint1.lineseg3" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape62.dragpoint1.lineseg4" orient="vertical" x="353.0" y="63.0"/>
+              <linesegment label="Try" length="63" name="shape62.dragpoint1.lineseg5" orient="horizontal" x="353.0" y="63.0"/>
+            </dragpoint>
+            <dragpoint identifier="error" name="shape62.dragpoint2" text="Catch" toShape="shape83" x="416.0" y="697.0">
+              <linesegment length="0" name="shape62.dragpoint2.lineseg1" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="0" name="shape62.dragpoint2.lineseg2" orient="vertical" x="274.0" y="63.0"/>
+              <linesegment length="79" name="shape62.dragpoint2.lineseg3" orient="horizontal" x="274.0" y="63.0"/>
+              <linesegment length="640" name="shape62.dragpoint2.lineseg4" orient="vertical" x="353.0" y="63.0"/>
+              <linesegment label="Catch" length="63" name="shape62.dragpoint2.lineseg5" orient="horizontal" x="353.0" y="703.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="exception_icon" name="shape63" shapetype="exception" userlabel="Throw Arc file exists" x="1008.0" y="528.0">
+          <configuration>
+            <exception stopProcessReturnSingleDoc="false" stopsingledoc="true" title="">
+              <exMessage>Employee File {1} already exists in ARC Directory!</exMessage>
+              <exParameters>
+                <parametervalue key="0" valueType="track">
+                  <trackparameter defaultValue="" propertyId="dynamicdocument.CsvFileName" propertyName="Dynamic Document Property - CsvFileName"/>
+                </parametervalue>
+              </exParameters>
+            </exception>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="processcall_icon" name="shape73" shapetype="processcall" userlabel="" x="1200.0" y="208.0">
+          <configuration>
+            <processcall abort="true" processId="61d69f3c-08d4-4886-ae37-6aca9ff7b0ad" wait="true">
+              <parameters/>
+              <returnpaths>
+                <returnpaths childShapeName="shape7" returnLabel=""/>
+              </returnpaths>
+            </processcall>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="shape7" name="shape73.dragpoint1" toShape="shape92" x="1376.0" y="217.0">
+              <linesegment length="0" name="shape73.dragpoint1.lineseg1" orient="horizontal" x="1234.0" y="223.0"/>
+              <linesegment length="0" name="shape73.dragpoint1.lineseg2" orient="vertical" x="1234.0" y="223.0"/>
+              <linesegment length="79" name="shape73.dragpoint1.lineseg3" orient="horizontal" x="1234.0" y="223.0"/>
+              <linesegment length="0" name="shape73.dragpoint1.lineseg4" orient="vertical" x="1313.0" y="223.0"/>
+              <linesegment length="63" name="shape73.dragpoint1.lineseg5" orient="horizontal" x="1313.0" y="223.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape74" shapetype="processcall" userlabel="" x="1584.0" y="208.0">
+          <configuration>
+            <processcall abort="true" processId="e5ecbbe6-1cce-493b-b0b0-5d13c9feae86" wait="true">
+              <parameters/>
+              <returnpaths>
+                <returnpaths childShapeName="shape16" returnLabel=""/>
+                <returnpaths childShapeName="shape18" returnLabel=""/>
+              </returnpaths>
+            </processcall>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="shape16" name="shape74.dragpoint1" toShape="shape75" x="1760.0" y="217.0">
+              <linesegment length="0" name="shape74.dragpoint1.lineseg1" orient="horizontal" x="1618.0" y="223.0"/>
+              <linesegment length="0" name="shape74.dragpoint1.lineseg2" orient="vertical" x="1618.0" y="223.0"/>
+              <linesegment length="79" name="shape74.dragpoint1.lineseg3" orient="horizontal" x="1618.0" y="223.0"/>
+              <linesegment length="0" name="shape74.dragpoint1.lineseg4" orient="vertical" x="1697.0" y="223.0"/>
+              <linesegment length="63" name="shape74.dragpoint1.lineseg5" orient="horizontal" x="1697.0" y="223.0"/>
+            </dragpoint>
+            <dragpoint identifier="shape18" name="shape74.dragpoint2" toShape="shape75" x="1760.0" y="217.0">
+              <linesegment length="0" name="shape74.dragpoint2.lineseg1" orient="horizontal" x="1618.0" y="223.0"/>
+              <linesegment length="0" name="shape74.dragpoint2.lineseg2" orient="vertical" x="1618.0" y="223.0"/>
+              <linesegment length="79" name="shape74.dragpoint2.lineseg3" orient="horizontal" x="1618.0" y="223.0"/>
+              <linesegment length="0" name="shape74.dragpoint2.lineseg4" orient="vertical" x="1697.0" y="223.0"/>
+              <linesegment length="63" name="shape74.dragpoint2.lineseg5" orient="horizontal" x="1697.0" y="223.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="returndocuments_icon" name="shape75" shapetype="returndocuments" userlabel="" x="1776.0" y="208.0">
+          <configuration>
+            <returndocuments label=""/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="documentproperties_icon" name="shape82" shapetype="documentproperties" userlabel="Set HCMCsvDirectory Property" x="432.0" y="48.0">
+          <configuration>
+            <documentproperties>
+              <documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Process Property - HCMCsvDirectory" persist="false" propertyId="process.HCMCsvDirectory" shouldEncrypt="false">
+                <sourcevalues>
+                  <parametervalue key="1" valueType="process">
+                    <processparameter processproperty="HCMEmployeeCsvDirectory" processpropertydefaultvalue=""/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+            </documentproperties>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape82.dragpoint1" toShape="shape33" x="608.0" y="57.0">
+              <linesegment length="0" name="shape82.dragpoint1.lineseg1" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape82.dragpoint1.lineseg2" orient="vertical" x="466.0" y="63.0"/>
+              <linesegment length="79" name="shape82.dragpoint1.lineseg3" orient="horizontal" x="466.0" y="63.0"/>
+              <linesegment length="0" name="shape82.dragpoint1.lineseg4" orient="vertical" x="545.0" y="63.0"/>
+              <linesegment length="63" name="shape82.dragpoint1.lineseg5" orient="horizontal" x="545.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape83" shapetype="processcall" userlabel="" x="432.0" y="688.0">
+          <configuration>
+            <processcall abort="true" processId="129ed7ea-79ef-49ce-b521-9b90ef84f413" wait="true">
+              <parameters/>
+              <returnpaths>
+                <returnpaths childShapeName="shape3" returnLabel=""/>
+              </returnpaths>
+            </processcall>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="shape3" name="shape83.dragpoint1" toShape="shape85" x="608.0" y="697.0">
+              <linesegment length="0" name="shape83.dragpoint1.lineseg1" orient="horizontal" x="466.0" y="703.0"/>
+              <linesegment length="0" name="shape83.dragpoint1.lineseg2" orient="vertical" x="466.0" y="703.0"/>
+              <linesegment length="79" name="shape83.dragpoint1.lineseg3" orient="horizontal" x="466.0" y="703.0"/>
+              <linesegment length="0" name="shape83.dragpoint1.lineseg4" orient="vertical" x="545.0" y="703.0"/>
+              <linesegment length="63" name="shape83.dragpoint1.lineseg5" orient="horizontal" x="545.0" y="703.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="returndocuments_icon" name="shape85" shapetype="returndocuments" userlabel="" x="624.0" y="688.0">
+          <configuration>
+            <returndocuments label=""/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="branch_icon" name="shape86" shapetype="branch" userlabel="" x="1008.0" y="48.0">
+          <configuration>
+            <branch numBranches="2"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="1" name="shape86.dragpoint1" text="1" toShape="shape38" x="1184.0" y="57.0">
+              <linesegment length="0" name="shape86.dragpoint1.lineseg1" orient="horizontal" x="1042.0" y="63.0"/>
+              <linesegment length="0" name="shape86.dragpoint1.lineseg2" orient="vertical" x="1042.0" y="63.0"/>
+              <linesegment length="79" name="shape86.dragpoint1.lineseg3" orient="horizontal" x="1042.0" y="63.0"/>
+              <linesegment length="0" name="shape86.dragpoint1.lineseg4" orient="vertical" x="1121.0" y="63.0"/>
+              <linesegment label="1" length="63" name="shape86.dragpoint1.lineseg5" orient="horizontal" x="1121.0" y="63.0"/>
+            </dragpoint>
+            <dragpoint identifier="2" name="shape86.dragpoint2" text="2" toShape="shape73" x="1184.0" y="217.0">
+              <linesegment length="0" name="shape86.dragpoint2.lineseg1" orient="horizontal" x="1042.0" y="63.0"/>
+              <linesegment length="0" name="shape86.dragpoint2.lineseg2" orient="vertical" x="1042.0" y="63.0"/>
+              <linesegment length="79" name="shape86.dragpoint2.lineseg3" orient="horizontal" x="1042.0" y="63.0"/>
+              <linesegment length="160" name="shape86.dragpoint2.lineseg4" orient="vertical" x="1121.0" y="63.0"/>
+              <linesegment label="2" length="63" name="shape86.dragpoint2.lineseg5" orient="horizontal" x="1121.0" y="223.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="stop_icon" name="shape87" shapetype="stop" userlabel="" x="1776.0" y="48.0">
+          <configuration>
+            <stop continue="true"/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="dataprocess_icon" name="shape91" shapetype="dataprocess" userlabel="Sleep" x="1392.0" y="48.0">
+          <configuration>
+            <dataprocess>
+              <step index="1" key="1" name="Custom Scripting" processtype="12">
+                <dataprocessscript language="groovy" useCache="true">
+                  <script>import java.util.Properties;
+import java.io.InputStream;
+import com.boomi.execution.ExecutionUtil; 
+
+int waitFor = ExecutionUtil.getDynamicProcessProperty("SleepSeconds") as Integer;
+Thread.sleep(waitFor * 1000);
+
+for( int i = 0; i &lt; dataContext.getDataCount(); i++ ) {
+    InputStream is = dataContext.getStream(i);
+    Properties props = dataContext.getProperties(i);
+
+    dataContext.storeStream(is, props);
+}</script>
+                </dataprocessscript>
+              </step>
+            </dataprocess>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape91.dragpoint1" toShape="shape31" x="1568.0" y="57.0">
+              <linesegment length="0" name="shape91.dragpoint1.lineseg1" orient="horizontal" x="1426.0" y="63.0"/>
+              <linesegment length="0" name="shape91.dragpoint1.lineseg2" orient="vertical" x="1426.0" y="63.0"/>
+              <linesegment length="79" name="shape91.dragpoint1.lineseg3" orient="horizontal" x="1426.0" y="63.0"/>
+              <linesegment length="0" name="shape91.dragpoint1.lineseg4" orient="vertical" x="1505.0" y="63.0"/>
+              <linesegment length="63" name="shape91.dragpoint1.lineseg5" orient="horizontal" x="1505.0" y="63.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="dataprocess_icon" name="shape92" shapetype="dataprocess" userlabel="Sleep" x="1392.0" y="208.0">
+          <configuration>
+            <dataprocess>
+              <step index="1" key="1" name="Custom Scripting" processtype="12">
+                <dataprocessscript language="groovy" useCache="true">
+                  <script>import java.util.Properties;
+import java.io.InputStream;
+import com.boomi.execution.ExecutionUtil; 
+
+int waitFor = ExecutionUtil.getDynamicProcessProperty("SleepSeconds") as Integer;
+Thread.sleep(waitFor * 1000);
+
+for( int i = 0; i &lt; dataContext.getDataCount(); i++ ) {
+    InputStream is = dataContext.getStream(i);
+    Properties props = dataContext.getProperties(i);
+
+    dataContext.storeStream(is, props);
+}</script>
+                </dataprocessscript>
+              </step>
+            </dataprocess>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape92.dragpoint1" toShape="shape74" x="1568.0" y="217.0">
+              <linesegment length="0" name="shape92.dragpoint1.lineseg1" orient="horizontal" x="1426.0" y="223.0"/>
+              <linesegment length="0" name="shape92.dragpoint1.lineseg2" orient="vertical" x="1426.0" y="223.0"/>
+              <linesegment length="79" name="shape92.dragpoint1.lineseg3" orient="horizontal" x="1426.0" y="223.0"/>
+              <linesegment length="0" name="shape92.dragpoint1.lineseg4" orient="vertical" x="1505.0" y="223.0"/>
+              <linesegment length="63" name="shape92.dragpoint1.lineseg5" orient="horizontal" x="1505.0" y="223.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+      </shapes>
+    </process>
+  </bns:object>
+  <bns:processOverrides/>
+</Component>

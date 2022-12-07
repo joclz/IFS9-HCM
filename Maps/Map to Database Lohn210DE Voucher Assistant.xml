@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="bea27e78-4f86-4d59-a3f0-a5fc129c03d0" createdBy="jan.von-milczewski@cegeka.de" createdDate="2022-11-10T16:12:34Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jan.von-milczewski@cegeka.de" modifiedDate="2022-11-29T10:15:57Z" name="Map to Database Lohn210DE Voucher Assistant " type="transform.map" version="11">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Map fromProfile="5287cfea-3d02-4400-8d5e-35d8963c6e93" toProfile="89c4d1ed-f682-4e7c-9194-e68a26a07086">
+      <Mappings>
+        <Mapping fromFunction="3" fromKey="3" fromType="function" toKey="5" toKeyPath="*[@key='2']/*[@key='3']/*[@key='5']" toNamePath="Statement/Fields/LOAD_DATA" toType="profile"/>
+        <Mapping fromFunction="6" fromKey="3" fromType="function" toKey="7" toKeyPath="*[@key='2']/*[@key='3']/*[@key='7']" toNamePath="Statement/Fields/LOAD_DATE" toType="profile"/>
+        <Mapping fromFunction="7" fromKey="3" fromType="function" toKey="8" toKeyPath="*[@key='2']/*[@key='3']/*[@key='8']" toNamePath="Statement/Fields/SPLIT_PATTERN" toType="profile"/>
+        <Mapping fromFunction="4" fromKey="3" fromType="function" toKey="6" toKeyPath="*[@key='2']/*[@key='3']/*[@key='6']" toNamePath="Statement/Fields/FILE_NAME" toType="profile"/>
+        <Mapping fromFunction="9" fromKey="1" fromType="function" toKey="4" toKeyPath="*[@key='2']/*[@key='3']/*[@key='4']" toNamePath="Statement/Fields/SITE" toType="profile"/>
+      </Mappings>
+      <Functions optimizeExecutionOrder="true">
+        <FunctionStep cacheEnabled="true" category="ProcessProperty" key="3" name="Get Document Property" position="3" sumEnabled="false" type="DocumentPropertyGet" x="30.0" y="256.0">
+          <Inputs/>
+          <Outputs>
+            <Output key="3" name="Dynamic Document Property - LoadData"/>
+          </Outputs>
+          <Configuration>
+            <DocumentProperty defaultValue="" persist="false" propertyId="dynamicdocument.LoadData" propertyName="Dynamic Document Property - LoadData"/>
+          </Configuration>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" category="ProcessProperty" key="4" name="Get Document Property" position="4" sumEnabled="false" type="DocumentPropertyGet" x="30.0" y="99.0">
+          <Inputs/>
+          <Outputs>
+            <Output key="3" name="Dynamic Document Property - CsvFileName"/>
+          </Outputs>
+          <Configuration>
+            <DocumentProperty defaultValue="" persist="false" propertyId="dynamicdocument.CsvFileName" propertyName="Dynamic Document Property - CsvFileName"/>
+          </Configuration>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" category="ProcessProperty" key="6" name="Get Document Property" position="6" sumEnabled="false" type="DocumentPropertyGet" x="30.0" y="181.0">
+          <Inputs/>
+          <Outputs>
+            <Output key="3" name="Dynamic Document Property - LoadDate"/>
+          </Outputs>
+          <Configuration>
+            <DocumentProperty defaultValue="" persist="false" propertyId="dynamicdocument.LoadDate" propertyName="Dynamic Document Property - LoadDate"/>
+          </Configuration>
+        </FunctionStep>
+        <FunctionStep cacheEnabled="true" category="ProcessProperty" key="7" name="Get Document Property" position="7" sumEnabled="false" type="DocumentPropertyGet" x="30.0" y="329.0">
+          <Inputs/>
+          <Outputs>
+            <Output key="3" name="Dynamic Document Property - SplitPattern"/>
+          </Outputs>
+          <Configuration>
+            <DocumentProperty defaultValue="" persist="false" propertyId="dynamicdocument.SplitPattern" propertyName="Dynamic Document Property - SplitPattern"/>
+          </Configuration>
+        </FunctionStep>
+        <FunctionStep category="userdefined" id="9d371e6c-6c6f-439f-b5bb-565b0b4cfa5b" key="9" name="Get Site From Filename" position="9" type="userdefined" x="30.0" y="17.0">
+          <Inputs/>
+          <Outputs>
+            <Output key="1" name="OUTPUT"/>
+          </Outputs>
+          <Configuration/>
+        </FunctionStep>
+      </Functions>
+      <Defaults/>
+      <DocumentCacheJoins/>
+    </Map>
+  </bns:object>
+</Component>

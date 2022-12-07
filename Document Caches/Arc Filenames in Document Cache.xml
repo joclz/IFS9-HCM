@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="224b2d55-2bd9-4842-97b3-bb6ec9dd7d44" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-21T15:27:28Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-11-24T12:19:49Z" name="Arc Filenames in Document Cache" type="documentcache" version="17">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <DocumentCache enforceSingleLucene="true" profile="7d89eb90-4ab8-48a4-af8e-902e40d1f99e" profileType="profile.json">
+      <CacheIndex indexId="7" indexName="FilenameIndex">
+        <cacheKey alias="fileName (Root/Object/fileName)" elementKey="3" id="8" name="fileName (Root/Object/fileName)" taglistKey="0" xsi:type="ProfileElementKeyConfig"/>
+      </CacheIndex>
+    </DocumentCache>
+  </bns:object>
+</Component>

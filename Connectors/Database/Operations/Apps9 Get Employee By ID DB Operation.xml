@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" componentId="20b09db7-67a9-4c9d-8500-3f099c9691b7" createdBy="jochen.wolz@cegeka.com" createdDate="2022-11-18T08:47:57Z" currentVersion="true" deleted="false" folderFullPath="Kendrion (Villingen) GmbH/IFS9-HCM" folderId="Rjo1MzU0NzE2" folderName="IFS9-HCM" modifiedBy="jochen.wolz@cegeka.com" modifiedDate="2022-12-02T13:07:16Z" name="Apps9 Get Employee By ID DB Operation" subType="database" type="connector-action" version="6">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <Operation>
+      <Archiving directory="" enabled="false"/>
+      <Configuration>
+        <DatabaseGetAction batchCount="1" maxRows="0">
+          <ReadProfile linkElementKey="5" linkElementName="EMP_NO (Statement/Fields/EMP_NO)" profileId="ab95b9c6-6f14-4b6c-be06-a2406bcfb183"/>
+        </DatabaseGetAction>
+      </Configuration>
+      <Tracking>
+        <TrackedFields/>
+      </Tracking>
+      <Caching/>
+    </Operation>
+  </bns:object>
+</Component>
